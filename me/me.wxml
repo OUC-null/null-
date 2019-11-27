@@ -1,0 +1,50 @@
+<view class="container">
+  <view class="about_me">
+    <view class="img_box">
+      <image src="/images/1.jpg" mode="scaleToFill"></image>
+    </view>
+
+    <view class="text_box">
+      <text>我的ID：{{id}}</text>
+      <text>联系方式：{{phone}}</text>
+      <text class="info_box">个人简介：{{info}}</text>
+    </view>  
+  </view>
+
+  <view class="details">
+    <button class="details_box" bindtap="myReleased">
+      <image src="/images/icon/released.png" mode="scaleToFill"></image>
+      <text>我发布的</text>
+    </button>
+    <button class="details_box" bindtap="mySale">
+      <image src="/images/icon/sale.png" mode="scaleToFill"></image>
+      <text>我卖出的</text>
+    </button>
+    <button class="details_box" bindtap="myBuyIn">
+      <image src="/images/icon/buyin.png" mode="scaleToFill"></image>
+      <text>我买到的</text>
+    </button>
+    <button class="details_box" bindtap="bindPhone">
+      <image src="/images/icon/bind_phone.png" mode="scaleToFill"></image>
+      <text>绑定手机</text>
+    </button>
+  </view>
+  <view class="logout_box" bindtap="relaunch">
+    <button>退出登录</button>
+  </view>
+</view>
+
+<!--index.wxml
+<view class="container">
+  <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+  <view class="usermotto">
+    <text class="user-motto">{{motto}}</text>
+  </view>
+</view>
+-->
