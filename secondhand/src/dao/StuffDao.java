@@ -132,4 +132,90 @@ public class StuffDao {
 		}
 		return result;
 	}	
+	//无条件查询
+	public ArrayList<ShowStuff> findAll(){
+		//获取连接
+		Connection conn = DBUtil.getConn();
+		//SQL语句
+		String sql = "select u.stuid, u.name, u.phone, u.payimg, "
+				+ "u.img, s.stuffname, s.price, s.info, s.stuffimg "
+				+ "from stuff s, user u "
+				+ "where s.id=u.id ";
+		PreparedStatement pstmt = null;
+		ResultSet rSet = null;
+		ArrayList<ShowStuff> list = new ArrayList<ShowStuff>();
+		
+		try {
+			pstmt =conn.prepareStatement(sql);
+			//发送SQL语句
+			rSet = pstmt.executeQuery();
+			//处理结果
+			while(rSet.next()){
+				ShowStuff showStuff = new ShowStuff();
+				showStuff.setStuid(rSet.getInt(1));
+				showStuff.setStuname(rSet.getString(2));
+				showStuff.setPhone(rSet.getInt(3));
+				showStuff.setPayimg(rSet.getString(4));
+				showStuff.setImg(rSet.getString(5));
+				showStuff.setStuffname(rSet.getString(6));
+				showStuff.setPrice(rSet.getInt(7));
+				showStuff.setInfo(rSet.getString(8));
+				showStuff.setStuffimg(rSet.getString(9));
+				
+				list.add(showStuff);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			DBUtil.closeRst(rSet);
+			DBUtil.closePstmt(pstmt);
+			DBUtil.closeConn(conn);
+		}
+		return list;
+	}
+	
+	//模糊查询
+	public ArrayList<ShowStuff> fuzzySearch(String UserInput){
+		//获取连接
+		Connection conn = DBUtil.getConn();
+		//SQL语句
+		String sql = "select u.stuid, u.name, u.phone, u.payimg, "
+				+ "u.img, s.stuffname, s.price, s.info, s.stuffimg "
+				+ "from stuff s, user u "
+				+ "where s.id=u.id and s.stuffname like concat('%',?,'%')";
+		PreparedStatement pstmt = null;
+		ResultSet rSet = null;
+		ArrayList<ShowStuff> list = new ArrayList<ShowStuff>();
+		
+		try {
+			pstmt =conn.prepareStatement(sql);
+			//设置参数
+			pstmt.setString(1, UserInput);
+			//发送SQL语句
+			rSet = pstmt.executeQuery();
+			//处理结果
+			while(rSet.next()){
+				ShowStuff showStuff = new ShowStuff();
+				showStuff.setStuid(rSet.getInt(1));
+				showStuff.setStuname(rSet.getString(2));
+				showStuff.setPhone(rSet.getInt(3));
+				showStuff.setPayimg(rSet.getString(4));
+				showStuff.setImg(rSet.getString(5));
+				showStuff.setStuffname(rSet.getString(6));
+				showStuff.setPrice(rSet.getInt(7));
+				showStuff.setInfo(rSet.getString(8));
+				showStuff.setStuffimg(rSet.getString(9));
+				list.add(showStuff);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			DBUtil.closeRst(rSet);
+			DBUtil.closePstmt(pstmt);
+			DBUtil.closeConn(conn);
+		}
+		return list;
+	}
 }
