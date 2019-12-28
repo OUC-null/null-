@@ -11,31 +11,25 @@ Page({
 
  relaunch:function(){
    wx.reLaunch({
-     url: '/pages/homepage/homepage',
+     url: '/pages/login/login',
    })
  },
 
  myReleased:function(){
-   wx.switchTab({
-     url: '/pages/homepage/homepage',
+   wx.navigateTo({
+     url: '/pages/myReleased/myReleased',
    })
  },
 
   mySale: function () {
-    wx.switchTab({
-      url: '/pages/homepage/homepage',
+    wx.navigateTo({
+      url: '/pages/mySale/mySale',
     })
   },
 
   mBuyIn: function () {
-    wx.switchTab({
-      url: '/pages/homepage/homepage',
-    })
-  },
-
-  bindPhone: function () {
-    wx.switchTab({
-      url: '/pages/homepage/homepage',
+    wx.navigateTo({
+      url: '/pages/mBuyIn/mBuyIn',
     })
   },
 

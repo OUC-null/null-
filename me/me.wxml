@@ -20,14 +20,14 @@
       <image src="/images/icon/sale.png" mode="scaleToFill"></image>
       <text>我卖出的</text>
     </button>
-    <button class="details_box" bindtap="myBuyIn">
+    <button class="details_box" bindtap="mBuyIn">
       <image src="/images/icon/buyin.png" mode="scaleToFill"></image>
       <text>我买到的</text>
     </button>
-    <button class="details_box" bindtap="bindPhone">
+    <!-- <button class="details_box" bindtap="bindPhone">
       <image src="/images/icon/bind_phone.png" mode="scaleToFill"></image>
       <text>绑定手机</text>
-    </button>
+    </button> -->
   </view>
   <view class="logout_box" bindtap="relaunch">
     <button>退出登录</button>
