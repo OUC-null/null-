@@ -1,0 +1,52 @@
+<view class="container">
+  <view class="search_container">
+    <!-- 表单 -->
+    <form bindsubmit="formSubmit">
+      <!-- 设置name值，这样JS才能接收name=keyword的值 -->
+      <view class='search'>
+        <image src="/images/icon/search.png" mode="scaleToFill"></image>
+        <input name="keyword" maxlength="100" placeholder='搜索...' />
+      </view>
+    </form>
+
+    <scroll-view scroll-y='true' style="height:{{height}}px" bindscrolltolower='lower'>
+      <view class="show" wx:for="{{re}}" wx:for-item="i" wx:key="i.stuId" style="position:aboslute;height:{{(height/2-1)}}px;width:100%; border-bottom:1px solid #ccc">
+        <!-- 当提交空白表单的时候 -->
+        <view wx:if="{{i.emptyflag}}">
+          <view class="empty">{{i.empty}}</view>
+        </view>
+        <!-- 当查询不到结果的时候 -->
+        <view wx:elif="{{i.noresultflag}}">
+          <view class="empty">{{i.noresult}}</view>
+        </view>
+        <!-- 当有搜索结果的时候 -->
+        <view wx:else>
+          <view class="box_top">
+            <view>
+              <image src="{{i.imgPath}}" mode="scaleToFill"></image>
+            </view>
+            <view class="text_box">
+              <text>发布人：{{i.stuId}}</text>
+              <text>物品描述：{{i.content}}</text>
+            </view>
+            <view class="text1">{{i.price}}</view>
+          </view>
+          <view class="box_middle">
+            <swiper indicator-dots='{{true}}' current='{{currentIndex}}' circular='{{true}}'>
+              <swiper-item wx:for="{{i.stuffImgPath}}" wx:for-item="j" wx:key="i.stuffId" style="text-align:center">
+                <image src='{{j}}' mode='aspectFit'></image>
+              </swiper-item>
+            </swiper>
+          </view>
+          <view class="box_bottom">
+            <view>联系人：{{i.name}}</view>
+            <view>联系电话：{{i.phone}}</view>
+          </view>
+          <view class="time">
+            <view>发布时间：2019-01-01</view>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+</view>
