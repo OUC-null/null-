@@ -1,0 +1,25 @@
+<view class="container">
+  <image src="/images/1.jpg" mode="scaleToFill"></image>
+  <view class="login_form">
+    <form bindsubmit="formSubmit" class="form">
+      <!-- 用户 -->
+      <view class="box">
+        <image src="/images/icon/user.png"></image>
+        <view>
+          <input  name="stuId" bindinput="noinput" value='{{stuId}}' placeholder="请输入学号" ></input>
+        </view>
+      </view>
+      <!-- 密码 -->
+      <view class="box">
+        <image src="/images/icon/pwd.png"></image>
+        <view>
+          <input type="password" name="pwd" bindinput="nopwd" placeholder="请输入选课系统密码绑定" value='{{pwd}}'/>
+        </view>
+      </view>
+      <!-- 按钮 -->
+      <view>
+      <button class="login" size="{{primarySize}}" style="margin-top: 50rpx" form-type='submit' disabled='{{disabled}}'>登录</button>
+      </view>
+    </form>
+  </view>
+</view>
