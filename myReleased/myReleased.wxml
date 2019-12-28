@@ -1,0 +1,24 @@
+<swiper class="box" indicator-dots='{{true}}' current='{{currentIndex}}' circular='{{true}}'>
+  <swiper-item class="page" wx:for="{{res}}" wx:for-item="i" wx:key="i.stuId" >
+    <view class="top">
+      <swiper indicator-dots='{{true}}' circular='{{true}}'>
+        <swiper-item wx:for="{{i.stuffImgPath}}" wx:for-item="j" wx:key="i.stuffId">
+          <image src='{{j}}' mode='aspectFit'></image>
+        </swiper-item>
+      </swiper>
+    </view>
+    <view class="middle">
+      <image src="{{i.imgPath}}" mode="aspectFit"></image>
+      <view>{{i.stuId}}</view>
+    </view>
+    <view class="bottom">
+      <view class="view_all" style="border-bottom: 1px solid  rgba(128, 128, 128, 0.438);">价格：{{i.price}}¥</view>
+      <view class="content">
+        <view class="view_all" style="height:100rpx;width:35%;">物品描述：</view>
+        <scroll-view scroll-y style="height:100rpx;width:65%;line-height:100rpx;font-size:45rpx;">{{i.content}}</scroll-view>
+      </view>
+      <view class="view_all" style="border-bottom: 1px solid  rgba(128, 128, 128, 0.438);">联系人：{{i.name}}</view>
+      <view class="view_all" style="border-bottom: 1px solid  rgba(128, 128, 128, 0.438);">联系电话：{{i.phone}}</view>
+    </view>
+  </swiper-item>
+</swiper>
